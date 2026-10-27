@@ -137,18 +137,56 @@ button, input, select, textarea {
   align-items: center;
   gap: 0.75rem;
   font-weight: 800;
+  text-decoration: none;
 }
 
 .logo-icon {
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: var(--radius-sm);
-  background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
-  color: #FFFFFF;
+  width: 2.65rem;
+  height: 2.65rem;
+  border-radius: 10px;
+  background: #232034;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 10px rgba(79, 70, 229, 0.35);
+  border: 1.5px solid rgba(56, 189, 248, 0.4);
+  box-shadow: 0 4px 14px rgba(56, 189, 248, 0.25), 0 0 10px rgba(236, 72, 153, 0.2);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+  flex-shrink: 0;
+}
+
+.nav-logo:hover .logo-icon {
+  transform: scale(1.08) rotate(2deg);
+  border-color: rgba(56, 189, 248, 0.7);
+  box-shadow: 0 6px 20px rgba(56, 189, 248, 0.45), 0 0 16px rgba(236, 72, 153, 0.35);
+}
+
+.brand-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.footer-logo-badge {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 8px;
+  background: #232034;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  box-shadow: 0 2px 8px rgba(56, 189, 248, 0.2);
+  flex-shrink: 0;
 }
 
 .logo-text {

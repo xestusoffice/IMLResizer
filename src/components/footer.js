@@ -1,7 +1,4 @@
-/**
- * Universal Footer for IMLResizer
- * Includes AdSense legal compliance links, privacy guarantee, and Xestus company info.
- */
+import logoUrl from '../assets/logo.png';
 
 export function renderFooter() {
   const footerContainer = document.getElementById('footer-mount') || document.querySelector('footer');
@@ -36,8 +33,13 @@ export function renderFooter() {
           <!-- Column 1: Brand Info -->
           <div class="footer-col brand-col">
             <div class="footer-brand">
-              <span class="brand-title">IMLResizer</span>
-              <span class="brand-sub">by Xestus (<a href="https://xestus.in" target="_blank" rel="noopener">xestus.in</a>)</span>
+              <div class="footer-logo-badge">
+                <img src="${logoUrl}" alt="IMLResizer Logo" class="brand-logo-img" width="36" height="36" />
+              </div>
+              <div>
+                <span class="brand-title">IMLResizer</span>
+                <span class="brand-sub">by Xestus (<a href="https://xestus.in" target="_blank" rel="noopener">xestus.in</a>)</span>
+              </div>
             </div>
             <p class="brand-desc">
               The premier free online photo resizer and image compressor designed specifically for government exam registrations, visa & passport applications, and social media.
