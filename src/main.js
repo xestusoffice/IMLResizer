@@ -36,13 +36,17 @@ const state = {
   enhanceSignature: false,
   signatureThreshold: 185,
   passportSheetMode: false,
+  showFaceGuide: false,
+  defaultAspect: null,
   processedBlob: null,
+  activeCanvas: null,
   isProcessing: false
 };
 
 // Initialize Application
 document.addEventListener('DOMContentLoaded', () => {
-  renderNavbar('home');
+  const activePage = detectCurrentPageAndApplyDefaults();
+  renderNavbar(activePage);
   renderFooter();
   initContactModal();
 
@@ -51,10 +55,78 @@ document.addEventListener('DOMContentLoaded', () => {
   initPresetList();
   initSampleImages();
   initFaqAccordion();
+  initShareButtons();
 
-  // Check URL parameters for pre-selected presets (e.g. ?target=20kb)
+  // Check URL parameters (e.g. ?preset=ssc or ?kb=20)
   handleUrlParams();
 });
+
+/**
+ * Detect Current Page Route and Apply Tailored Defaults
+ */
+function detectCurrentPageAndApplyDefaults() {
+  const path = window.location.pathname.toLowerCase();
+
+  if (path.includes('resize-image-to-20kb')) {
+    state.targetKB = 20;
+    state.format = 'image/jpeg';
+    state.dpi = 200;
+    return '20kb';
+  } else if (path.includes('resize-image-to-50kb')) {
+    state.targetKB = 50;
+    state.unit = 'cm';
+    state.width = 3.5;
+    state.height = 4.5;
+    state.dpi = 200;
+    state.format = 'image/jpeg';
+    state.defaultAspect = 3.5 / 4.5;
+    return '50kb';
+  } else if (path.includes('resize-image-to-100kb')) {
+    state.targetKB = 100;
+    state.dpi = 300;
+    state.format = 'image/jpeg';
+    return '100kb';
+  } else if (path.includes('passport-photo-maker')) {
+    state.dpi = 300;
+    state.unit = 'mm';
+    state.width = 35;
+    state.height = 45;
+    state.defaultAspect = 35 / 45;
+    state.showFaceGuide = true;
+    state.passportSheetMode = true;
+    state.format = 'image/jpeg';
+    return 'passport';
+  } else if (path.includes('signature-resizer')) {
+    state.targetKB = 15;
+    state.enhanceSignature = true;
+    state.unit = 'cm';
+    state.width = 4.0;
+    state.height = 2.0;
+    state.dpi = 200;
+    state.format = 'image/jpeg';
+    state.defaultAspect = 4.0 / 2.0;
+    return 'signature';
+  } else if (path.includes('image-compressor')) {
+    state.targetKB = 200;
+    state.format = 'image/jpeg';
+    return 'compressor';
+  } else if (path.includes('convert-to-pdf')) {
+    state.dpi = 300;
+    return 'topdf';
+  } else if (path.includes('contact')) {
+    return 'contact';
+  } else if (path.includes('privacy')) {
+    return 'privacy';
+  } else if (path.includes('terms')) {
+    return 'terms';
+  } else if (path.includes('about')) {
+    return 'about';
+  }
+
+  // Default homepage
+  state.targetKB = 50;
+  return 'home';
+}
 
 /**
  * URL Parameters handling (e.g. /?preset=ssc or ?kb=20)
@@ -66,6 +138,8 @@ function handleUrlParams() {
 
   if (targetKbParam) {
     state.targetKB = parseInt(targetKbParam, 10);
+    const targetKbInput = document.getElementById('targetKbInput');
+    if (targetKbInput) targetKbInput.value = state.targetKB;
   }
 
   if (presetParam) {
@@ -84,31 +158,33 @@ function initDropzone() {
 
   if (!dropzone || !fileInput) return;
 
-  selectFileBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    fileInput.click();
-  });
+  if (selectFileBtn) {
+    selectFileBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      fileInput.click();
+    });
+  }
 
   dropzone.addEventListener('click', () => fileInput.click());
 
   // Drag and drop events
   ['dragenter', 'dragover'].forEach(name => {
-    dropzone.addEventListener(name, (e) => {
+    window.addEventListener(name, (e) => {
       e.preventDefault();
       e.stopPropagation();
-      dropzone.classList.add('drag-over');
+      if (dropzone) dropzone.classList.add('drag-over');
     });
   });
 
   ['dragleave', 'drop'].forEach(name => {
-    dropzone.addEventListener(name, (e) => {
+    window.addEventListener(name, (e) => {
       e.preventDefault();
       e.stopPropagation();
-      dropzone.classList.remove('drag-over');
+      if (dropzone) dropzone.classList.remove('drag-over');
     });
   });
 
-  dropzone.addEventListener('drop', (e) => {
+  window.addEventListener('drop', (e) => {
     const files = Array.from(e.dataTransfer.files).filter(f => f.type.startsWith('image/'));
     if (files.length > 0) handleFiles(files);
   });
@@ -118,13 +194,16 @@ function initDropzone() {
     if (files.length > 0) handleFiles(files);
   });
 
-  // Paste from clipboard (Ctrl+V)
+  // Paste anywhere on page (Ctrl+V)
   window.addEventListener('paste', (e) => {
     const items = (e.clipboardData || e.originalEvent.clipboardData).items;
     for (const item of items) {
       if (item.type.indexOf('image') !== -1) {
         const file = item.getAsFile();
-        if (file) handleFiles([file]);
+        if (file) {
+          handleFiles([file]);
+          showToast('Image pasted from clipboard!', 'success');
+        }
         break;
       }
     }
@@ -147,9 +226,12 @@ async function handleFiles(files) {
     state.flipH = false;
     state.flipV = false;
 
-    // Set initial width / height to image natural dimensions
-    state.width = img.naturalWidth;
-    state.height = img.naturalHeight;
+    // If dimensions were not pre-configured, default to natural dimensions in px
+    if (!state.width || !state.height) {
+      state.unit = 'px';
+      state.width = img.naturalWidth;
+      state.height = img.naturalHeight;
+    }
 
     // Show Editor UI
     const studio = document.getElementById('editorStudio');
@@ -161,9 +243,9 @@ async function handleFiles(files) {
     const viewport = document.getElementById('cropperViewport');
     if (viewport) {
       state.cropper = new InteractiveCropper(viewport, {
-        aspectRatio: null,
+        aspectRatio: state.defaultAspect || null,
         showGrid: true,
-        showFaceGuide: false,
+        showFaceGuide: state.showFaceGuide || false,
         onCropChange: (crop) => {
           state.cropRect = crop;
           schedulePreviewUpdate();
@@ -180,6 +262,7 @@ async function handleFiles(files) {
 
     // Scroll smoothly to editor
     studio.scrollIntoView({ behavior: 'smooth' });
+    showToast('Photo loaded into studio. Adjust dimensions or download directly!', 'info');
   } catch (err) {
     alert('Failed to load image: ' + err.message);
   }
@@ -202,6 +285,19 @@ function updateOriginalMetaDisplay() {
  * Editor Controls (Toolbar, Tabs, Aspect ratio, Dimensions, KB Target)
  */
 function initEditorControls() {
+  // Sync initial DOM control values with state
+  const targetKbInput = document.getElementById('targetKbInput');
+  if (targetKbInput && state.targetKB) targetKbInput.value = state.targetKB;
+
+  const dpiSelect = document.getElementById('dpiSelect');
+  if (dpiSelect && state.dpi) dpiSelect.value = state.dpi;
+
+  const enhanceSigToggle = document.getElementById('enhanceSigToggle');
+  if (enhanceSigToggle && state.enhanceSignature) enhanceSigToggle.checked = true;
+
+  const passportSheetToggle = document.getElementById('passportSheetToggle');
+  if (passportSheetToggle && state.passportSheetMode) passportSheetToggle.checked = true;
+
   // 1. Toolbar buttons: Rotate, Flip, Face Guide, Reset
   const rotLeftBtn = document.getElementById('rotLeftBtn');
   const rotRightBtn = document.getElementById('rotRightBtn');
@@ -236,9 +332,11 @@ function initEditorControls() {
     });
   }
   if (faceGuideBtn) {
+    if (state.showFaceGuide) faceGuideBtn.classList.add('active');
     faceGuideBtn.addEventListener('click', () => {
       faceGuideBtn.classList.toggle('active');
       const active = faceGuideBtn.classList.contains('active');
+      state.showFaceGuide = active;
       if (state.cropper) state.cropper.setFaceGuide(active);
     });
   }
@@ -273,6 +371,7 @@ function initEditorControls() {
       else if (ratioAttr === '3.5:4.5') ratioVal = 3.5 / 4.5;
       else if (ratioAttr === '16:9') ratioVal = 16 / 9;
 
+      state.defaultAspect = ratioVal;
       if (state.cropper) state.cropper.setAspectRatio(ratioVal);
       schedulePreviewUpdate();
     });
@@ -294,7 +393,6 @@ function initEditorControls() {
 
   // 4. Target KB Quick Buttons & Inputs
   const kbButtons = document.querySelectorAll('.kb-btn');
-  const targetKbInput = document.getElementById('targetKbInput');
   const enableKbCheck = document.getElementById('enableTargetKb');
 
   kbButtons.forEach(btn => {
@@ -403,7 +501,6 @@ function initEditorControls() {
   }
 
   // 7. DPI Selector
-  const dpiSelect = document.getElementById('dpiSelect');
   if (dpiSelect) {
     dpiSelect.addEventListener('change', (e) => {
       state.dpi = parseInt(e.target.value, 10);
@@ -525,6 +622,7 @@ function applyPreset(preset) {
   // Set aspect ratio on cropper if dimensions are present
   if (preset.width && preset.height && state.cropper) {
     const ratio = preset.width / preset.height;
+    state.defaultAspect = ratio;
     state.cropper.setAspectRatio(ratio);
   }
 
@@ -546,6 +644,7 @@ function applyPreset(preset) {
   if (dimTabBtn) dimTabBtn.click();
 
   schedulePreviewUpdate();
+  showToast(`Applied preset: ${preset.name}`, 'info');
 }
 
 /**
@@ -554,7 +653,7 @@ function applyPreset(preset) {
 let previewTimeout = null;
 function schedulePreviewUpdate() {
   if (previewTimeout) clearTimeout(previewTimeout);
-  previewTimeout = setTimeout(processImageAndRenderPreview, 120);
+  previewTimeout = setTimeout(processImageAndRenderPreview, 100);
 }
 
 /**
@@ -625,8 +724,22 @@ async function processImageAndRenderPreview() {
 /**
  * Download Processed Single Image
  */
-function handleDownloadSingle() {
-  if (!state.processedBlob) return;
+async function handleDownloadSingle() {
+  const downloadBtn = document.getElementById('downloadProcessedBtn');
+  if (downloadBtn) {
+    downloadBtn.style.opacity = '0.7';
+    downloadBtn.innerHTML = '<span>Optimizing & Saving...</span>';
+  }
+
+  // Ensure latest preview process has finished
+  if (!state.processedBlob) {
+    await processImageAndRenderPreview();
+  }
+
+  if (!state.processedBlob) {
+    if (downloadBtn) downloadBtn.innerHTML = '<span>Download Failed</span>';
+    return;
+  }
 
   const ext = state.format === 'image/png' ? 'png' : state.format === 'image/webp' ? 'webp' : 'jpg';
   const targetLabel = state.targetKB ? `-${state.targetKB}kb` : '';
@@ -639,6 +752,22 @@ function handleDownloadSingle() {
   link.click();
   document.body.removeChild(link);
   setTimeout(() => URL.revokeObjectURL(link.href), 5000);
+
+  if (downloadBtn) {
+    downloadBtn.style.opacity = '1';
+    downloadBtn.innerHTML = `
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      <span>Downloaded (${(state.processedBlob.size / 1024).toFixed(1)} KB)!</span>
+    `;
+    setTimeout(() => {
+      downloadBtn.innerHTML = `
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        <span>Download Resized Image</span>
+      `;
+    }, 2500);
+  }
+
+  showToast(`Downloaded ${filename} successfully! Ready for upload.`, 'success');
 }
 
 /**
@@ -651,8 +780,8 @@ async function handleDownloadZip() {
   const folder = zip.folder('imlresizer-images');
 
   const downloadBtn = document.getElementById('downloadZipBtn');
-  const originalText = downloadBtn.innerHTML;
-  downloadBtn.innerHTML = '<span>Processing batch ZIP...</span>';
+  const originalText = downloadBtn ? downloadBtn.innerHTML : '';
+  if (downloadBtn) downloadBtn.innerHTML = '<span>Processing batch ZIP...</span>';
 
   try {
     for (let i = 0; i < state.filesList.length; i++) {
@@ -687,10 +816,11 @@ async function handleDownloadZip() {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    showToast('Batch ZIP downloaded successfully!', 'success');
   } catch (err) {
     alert('Failed to generate batch zip: ' + err.message);
   } finally {
-    downloadBtn.innerHTML = originalText;
+    if (downloadBtn) downloadBtn.innerHTML = originalText;
   }
 }
 
@@ -700,6 +830,7 @@ async function handleDownloadZip() {
 function handleExportPdf() {
   if (!state.activeCanvas) return;
   exportToPdf([state.activeCanvas], `imlresizer-${Date.now()}.pdf`);
+  showToast('PDF document generated & downloaded!', 'success');
 }
 
 /**
@@ -723,25 +854,20 @@ function loadSampleCanvas(type) {
   if (type === 'passport') {
     canvas.width = 600;
     canvas.height = 750;
-    // Gradient studio portrait background
     const bg = ctx.createLinearGradient(0, 0, 0, 750);
     bg.addColorStop(0, '#E0E7FF');
     bg.addColorStop(1, '#C7D2FE');
     ctx.fillStyle = bg;
     ctx.fillRect(0, 0, 600, 750);
 
-    // Stylized person silhouette for testing
     ctx.fillStyle = '#4F46E5';
-    // Head
     ctx.beginPath();
     ctx.arc(300, 310, 110, 0, Math.PI * 2);
     ctx.fill();
-    // Shoulders
     ctx.beginPath();
     ctx.ellipse(300, 610, 220, 160, 0, 0, Math.PI, true);
     ctx.fill();
 
-    // Eyes
     ctx.fillStyle = '#FFFFFF';
     ctx.beginPath();
     ctx.arc(260, 300, 12, 0, Math.PI * 2);
@@ -750,11 +876,9 @@ function loadSampleCanvas(type) {
   } else if (type === 'signature') {
     canvas.width = 700;
     canvas.height = 350;
-    // Paper texture / slight shadow
     ctx.fillStyle = '#F3F4F6';
     ctx.fillRect(0, 0, 700, 350);
 
-    // Pen stroke
     ctx.strokeStyle = '#1E3A8A';
     ctx.lineWidth = 6;
     ctx.lineCap = 'round';
@@ -766,13 +890,11 @@ function loadSampleCanvas(type) {
     ctx.bezierCurveTo(450, 210, 520, 140, 580, 210);
     ctx.stroke();
 
-    // Underline
     ctx.beginPath();
     ctx.moveTo(160, 240);
     ctx.lineTo(540, 240);
     ctx.stroke();
   } else {
-    // Landscape
     canvas.width = 1200;
     canvas.height = 800;
     const sky = ctx.createLinearGradient(0, 0, 0, 450);
@@ -781,13 +903,11 @@ function loadSampleCanvas(type) {
     ctx.fillStyle = sky;
     ctx.fillRect(0, 0, 1200, 800);
 
-    // Sun
     ctx.fillStyle = '#FBBF24';
     ctx.beginPath();
     ctx.arc(950, 180, 60, 0, Math.PI * 2);
     ctx.fill();
 
-    // Mountains
     ctx.fillStyle = '#475569';
     ctx.beginPath();
     ctx.moveTo(100, 600);
@@ -802,7 +922,6 @@ function loadSampleCanvas(type) {
     ctx.lineTo(1200, 600);
     ctx.fill();
 
-    // Hills foreground
     ctx.fillStyle = '#10B981';
     ctx.beginPath();
     ctx.ellipse(600, 750, 700, 200, 0, 0, Math.PI * 2);
@@ -829,5 +948,59 @@ function initFaqAccordion() {
         if (!isOpen) item.classList.add('open');
       });
     }
+  });
+}
+
+/**
+ * Toast Notification System
+ */
+export function showToast(message, type = 'info') {
+  let toastContainer = document.getElementById('toastContainer');
+  if (!toastContainer) {
+    toastContainer = document.createElement('div');
+    toastContainer.id = 'toastContainer';
+    toastContainer.className = 'toast-container';
+    document.body.appendChild(toastContainer);
+  }
+
+  const toast = document.createElement('div');
+  toast.className = `toast-item toast-${type}`;
+  toast.innerHTML = `
+    <span class="toast-dot"></span>
+    <span class="toast-msg">${message}</span>
+  `;
+
+  toastContainer.appendChild(toast);
+
+  setTimeout(() => {
+    toast.classList.add('fade-out');
+    setTimeout(() => {
+      if (toast.parentElement) toast.parentElement.removeChild(toast);
+    }, 300);
+  }, 3500);
+}
+
+/**
+ * Social Sharing Links
+ */
+function initShareButtons() {
+  const shareButtons = document.querySelectorAll('.share-btn');
+  shareButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const platform = btn.getAttribute('data-platform');
+      const url = encodeURIComponent(window.location.href);
+      const text = encodeURIComponent('Need to resize or compress photos to exact 20KB or 50KB for exams or visas? Try IMLResizer — 100% Free and Private:');
+
+      if (platform === 'whatsapp') {
+        window.open(`https://api.whatsapp.com/send?text=${text}%20${url}`, '_blank');
+      } else if (platform === 'telegram') {
+        window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
+      } else if (platform === 'copy') {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+          showToast('Website link copied to clipboard!', 'success');
+        });
+      }
+    });
   });
 }
