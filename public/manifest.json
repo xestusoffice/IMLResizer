@@ -1,0 +1,17 @@
+{
+  "name": "IMLResizer — Free Photo Resizer & KB Compressor",
+  "short_name": "IMLResizer",
+  "description": "Resize and compress images in pixels, cm, mm, and exact KB limits (20KB, 50KB, 100KB) with 100% browser privacy.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F8FAFC",
+  "theme_color": "#4F46E5",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
