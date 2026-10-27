@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free Passport & Visa Photo Maker Online — IMLResizer</title>
+  <meta name="description" content="Create compliant US Visa (2x2 inches), Schengen Visa (35x45mm), and Indian Passport photos online. Crop with face guidelines and generate a 4x6 printable sheet with 8 copies." />
+  <meta name="keywords" content="passport photo maker, visa photo resizer, us visa photo 2x2, schengen visa photo 35x45, printable 4x6 passport sheet, 300 dpi passport photo" />
+  <link rel="canonical" href="https://xestus.in/imlresizer/passport-photo-maker.html" />
+
+  <meta property="og:title" content="Free Passport & Visa Photo Maker Online — IMLResizer" />
+  <meta property="og:description" content="Crop passport photos with official face guidelines and generate printable 4x6 photo sheets for US, Europe, India visas." />
+  <meta property="og:url" content="https://xestus.in/imlresizer/passport-photo-maker.html" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "IMLResizer Passport Photo Maker",
+    "url": "https://xestus.in/imlresizer/passport-photo-maker.html",
+    "applicationCategory": "MultimediaApplication",
+    "description": "Free tool to generate government compliant passport and visa photos and 4x6 printable sheets."
+  }
+  </script>
+</head>
+<body>
+  <div id="navbar-mount"></div>
+
+  <div class="adsense-wrapper container adsense-leaderboard">
+    <div class="adsense-card" data-ad-slot="passport-top">
+      <span class="adsense-label">Advertisement</span>
+      <div class="adsense-slot-placeholder">
+        <span>Google AdSense Responsive Unit (728x90)</span>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero-section container">
+      <div class="hero-pill-badge">
+        <span>Official Visa Standards</span>
+      </div>
+      <h1 class="hero-title">
+        Free Online <span class="hero-gradient">Passport & Visa Photo Maker</span>
+      </h1>
+      <p class="hero-subtitle">
+        Crop photos with <strong>Biometric Facial Guidelines</strong> for <strong>US Visa (2x2"), Schengen (35x45mm), and India Passport</strong>. Pack multiple copies onto a <strong>4x6" Printable Sheet</strong>.
+      </p>
+
+      <div class="trust-badges-bar">
+        <div class="trust-badge-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Face, Eye & Chin Biometric Guide</span>
+        </div>
+        <div class="trust-badge-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Printable 4x6 Sheet (8 Copies)</span>
+        </div>
+        <div class="trust-badge-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>300 DPI High-Definition Export</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Upload Dropzone -->
+    <section class="dropzone-container container" id="dropzoneContainer">
+      <div class="dropzone-card" id="dropzone">
+        <div class="dropzone-icon-wrap">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        </div>
+        <h2 class="dropzone-title">Upload Portrait Photo to Make Passport Photo</h2>
+        <p class="dropzone-desc">Choose a front-facing photo with even lighting. We help you crop and center your face perfectly.</p>
+
+        <div class="dropzone-actions">
+          <button type="button" class="btn btn-primary btn-lg" id="selectFileBtn">
+            Upload Portrait Photo
+          </button>
+          <input type="file" id="fileInput" accept="image/*" multiple style="display: none;" />
+        </div>
+
+        <div class="sample-images-tray">
+          <span>Test immediately:</span>
+          <button type="button" class="sample-pill-btn" data-sample="passport">Load Demo Portrait</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Editor Studio -->
+    <section class="editor-studio container" id="editorStudio" style="display: none;">
+      <div class="editor-preview-card">
+        <div class="editor-card-header">
+          <div class="preview-title-group">
+            <span>Passport Crop Studio</span>
+          </div>
+          <div class="preview-toolbar">
+            <button type="button" class="tool-btn active" id="faceGuideBtn">Face Guide: ON</button>
+            <button type="button" class="tool-btn" id="rotLeftBtn">-90°</button>
+            <button type="button" class="tool-btn" id="rotRightBtn">+90°</button>
+            <button type="button" class="tool-btn" id="resetCropBtn">Reset</button>
+            <button type="button" class="tool-btn" id="uploadNewBtn">New File</button>
+          </div>
+        </div>
+        <div class="canvas-viewport" id="cropperViewport"></div>
+        <div class="aspect-quickbar">
+          <span class="aspect-label">Country:</span>
+          <button type="button" class="aspect-pill active" data-ratio="3.5:4.5">35x45 mm (India/Schengen/UK)</button>
+          <button type="button" class="aspect-pill" data-ratio="1:1">2x2 Inch (US Visa)</button>
+        </div>
+      </div>
+
+      <div class="editor-controls-card">
+        <div class="control-tabs">
+          <button type="button" class="control-tab-btn active" data-tab="tabPresets">Country Preset</button>
+          <button type="button" class="control-tab-btn" data-tab="tabEnhance">Print Sheet</button>
+        </div>
+
+        <div class="tab-pane active" id="tabPresets">
+          <div class="control-group">
+            <label style="font-weight: 700; font-size: 0.85rem; margin-bottom: 0.5rem; display: block;">Select Destination Country:</label>
+            <div class="preset-list-container" id="presetList"></div>
+          </div>
+        </div>
+
+        <div class="tab-pane" id="tabEnhance">
+          <div class="control-group">
+            <label style="display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
+              <span style="font-weight: 700; font-size: 0.9rem;">Generate 4x6" Printable Sheet</span>
+              <input type="checkbox" id="passportSheetToggle" checked />
+            </label>
+            <p style="font-size: 0.775rem; color: var(--text-muted); line-height: 1.5; margin-top: 0.5rem;">
+              Creates a standard 4x6 inch photographic sheet arranged with <strong>8 identical passport photos</strong> plus fine cutting lines. Print at Walgreens, CVS, or any local lab for pennies!
+            </p>
+          </div>
+        </div>
+
+        <div class="summary-bar-card">
+          <div class="comparison-grid">
+            <div class="comp-box">
+              <div class="comp-label">Original</div>
+              <div class="comp-val" id="origSize">-- KB</div>
+              <div class="comp-dim" id="origDim">--</div>
+            </div>
+            <div class="comp-box highlight">
+              <div class="comp-label">Output (300 DPI)</div>
+              <div class="comp-val" id="newSize">-- KB</div>
+              <div class="comp-dim" id="newDim">--</div>
+            </div>
+          </div>
+          <button type="button" class="btn-download-main" id="downloadProcessedBtn">
+            Download Passport Photo (JPG 300 DPI)
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Country Standards Table -->
+    <section class="content-section container">
+      <div class="section-header">
+        <h2 class="section-title">Official Passport Photo Dimensions & Guidelines</h2>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-box">
+          <h3 class="feature-title">US Visa & Passport</h3>
+          <p class="feature-desc">Dimensions: 2 x 2 inches (51 x 51 mm / 600 x 600 px). White background, eyes positioned between 1 1/8 and 1 3/8 inches from bottom edge.</p>
+        </div>
+        <div class="feature-box">
+          <h3 class="feature-title">Schengen Europe Visa</h3>
+          <p class="feature-desc">Dimensions: 35 x 45 mm (300 DPI). Light gray or white background. Face must take up 70% to 80% of photo height (32 - 36 mm).</p>
+        </div>
+        <div class="feature-box">
+          <h3 class="feature-title">India Passport & OCI</h3>
+          <p class="feature-desc">Dimensions: 35 x 45 mm or 2 x 2 inches (for OCI). White background, neutral facial expression, ears visible, no reflection on glasses.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-mount"></div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

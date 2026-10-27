@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us — IMLResizer by Xestus</title>
+  <meta name="description" content="Learn about IMLResizer, our mission to simplify image resizing for competitive exams and visas, and our parent technology organization Xestus (xestus.in)." />
+  <link rel="canonical" href="https://xestus.in/imlresizer/about.html" />
+</head>
+<body>
+  <div id="navbar-mount"></div>
+
+  <main style="padding: 3rem 0 5rem;">
+    <article class="container" style="max-width: 860px; line-height: 1.8;">
+      <div style="margin-bottom: 2rem;">
+        <span class="section-badge">Our Story & Mission</span>
+        <h1 class="hero-title" style="font-size: 2.25rem; text-align: left;">About IMLResizer</h1>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">Empowering candidates, students, and professionals with instantaneous, privacy-respecting photo utilities.</p>
+      </div>
+
+      <div class="features-grid" style="margin-bottom: 2.5rem;">
+        <div class="feature-box">
+          <div class="feature-icon" style="background: var(--primary-light); color: var(--primary);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+          </div>
+          <h3 class="feature-title">Why We Built IMLResizer</h3>
+          <p class="feature-desc">
+            Millions of candidates applying for government exams (SSC, UPSC, Banking, NEET, Railways) and international visas face rejected applications simply because their photo or signature exceeded an arbitrary limit by a few kilobytes or lacked correct DPI metadata. We created IMLResizer to solve this problem permanently with 100% precision.
+          </p>
+        </div>
+
+        <div class="feature-box">
+          <div class="feature-icon" style="background: var(--accent-emerald-light); color: #059669;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          </div>
+          <h3 class="feature-title">The Privacy Revolution</h3>
+          <p class="feature-desc">
+            Unlike other websites that upload personal photos, signatures, and ID scans to their servers, IMLResizer executes 100% of its algorithms directly inside your web browser. Nothing ever leaves your computer or smartphone.
+          </p>
+        </div>
+      </div>
+
+      <h2 style="font-size: 1.45rem; font-weight: 800; margin-bottom: 0.75rem;">About Xestus</h2>
+      <p style="color: var(--text-muted); margin-bottom: 1rem;">
+        IMLResizer is engineered and operated by <strong>Xestus</strong> (<a href="https://xestus.in" target="_blank" rel="noopener" style="color: var(--primary); font-weight: 700;">xestus.in</a>), a digital product studio focused on building high-performance, privacy-first web utilities and developer tools.
+      </p>
+      <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+        Our team comprises dedicated full-stack engineers and quality assurance specialists dedicated to crafting intuitive, zero-friction software accessible to everyone across the globe for free.
+      </p>
+
+      <div class="editor-controls-card" style="padding: 1.5rem; background: var(--bg-surface);">
+        <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 0.75rem;">Get in Touch With Our Team</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+          Whether you represent an educational institution, want to suggest an exam specification, report a bug, or discuss partnership opportunities, we would love to hear from you:
+        </p>
+        <div class="company-info-box" style="margin-bottom: 1rem;">
+          <div class="info-row"><span class="info-label">Organization:</span> <span class="info-val">Xestus Technologies</span></div>
+          <div class="info-row"><span class="info-label">Main Domain:</span> <a href="https://xestus.in" target="_blank" rel="noopener" class="info-val link">xestus.in</a></div>
+          <div class="info-row"><span class="info-label">Official Support:</span> <a href="mailto:xestus.office@gmail.com" class="info-val link">xestus.office@gmail.com</a></div>
+        </div>
+        <a href="contact.html" class="btn btn-primary btn-sm">Visit Feedback & Complaint Portal</a>
+      </div>
+    </article>
+  </main>
+
+  <div id="footer-mount"></div>
+  <script type="module">
+    import './src/style.css';
+    import { renderNavbar } from './src/components/nav.js';
+    import { renderFooter } from './src/components/footer.js';
+    import { initContactModal } from './src/components/contact-modal.js';
+    document.addEventListener('DOMContentLoaded', () => {
+      renderNavbar('about');
+      renderFooter();
+      initContactModal();
+    });
+  </script>
+</body>
+</html>

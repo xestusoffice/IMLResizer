@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Image Compressor Online in KB — IMLResizer</title>
+  <meta name="description" content="Free online image compressor. Compress JPG, PNG, and WebP images by up to 90% without loss of visible quality. Batch compression with ZIP download." />
+  <meta name="keywords" content="image compressor, reduce image size in kb, compress jpg online, compress png online, batch image compressor" />
+  <link rel="canonical" href="https://xestus.in/imlresizer/image-compressor.html" />
+
+  <meta property="og:title" content="Smart Image Compressor Online in KB — IMLResizer" />
+  <meta property="og:description" content="Reduce image file size by up to 90% while keeping high resolution. 100% private, runs directly in your browser." />
+  <meta property="og:url" content="https://xestus.in/imlresizer/image-compressor.html" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "IMLResizer Image Compressor",
+    "url": "https://xestus.in/imlresizer/image-compressor.html",
+    "applicationCategory": "MultimediaApplication",
+    "description": "Free batch image compressor to reduce file sizes in KB and MB locally."
+  }
+  </script>
+</head>
+<body>
+  <div id="navbar-mount"></div>
+
+  <div class="adsense-wrapper container adsense-leaderboard">
+    <div class="adsense-card" data-ad-slot="comp-top">
+      <span class="adsense-label">Advertisement</span>
+      <div class="adsense-slot-placeholder">
+        <span>Google AdSense Responsive Unit (728x90)</span>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero-section container">
+      <div class="hero-pill-badge">
+        <span>Lossless & High-Efficiency Mode</span>
+      </div>
+      <h1 class="hero-title">
+        Smart Online <span class="hero-gradient">Image Size Compressor</span>
+      </h1>
+      <p class="hero-subtitle">
+        Shrink <strong>JPG, PNG, WebP</strong> images by up to <strong>90%</strong> without visible quality degradation. Upload single files or compress multiple images at once into a <strong>ZIP file</strong>.
+      </p>
+
+      <div class="trust-badges-bar">
+        <div class="trust-badge-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Up to 90% File Size Reduction</span>
+        </div>
+        <div class="trust-badge-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Multi-Image Bulk Processing</span>
+        </div>
+        <div class="trust-badge-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>100% Client-Side Privacy</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Upload Dropzone -->
+    <section class="dropzone-container container" id="dropzoneContainer">
+      <div class="dropzone-card" id="dropzone">
+        <div class="dropzone-icon-wrap">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 14 10 14 10 20"></polyline><polyline points="20 10 14 10 14 4"></polyline><line x1="14" y1="10" x2="21" y2="3"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+        </div>
+        <h2 class="dropzone-title">Upload One or More Images to Compress</h2>
+        <p class="dropzone-desc">Drag & drop multiple photos or an entire folder. Files remain completely on your machine.</p>
+
+        <div class="dropzone-actions">
+          <button type="button" class="btn btn-primary btn-lg" id="selectFileBtn">
+            Select Images to Compress
+          </button>
+          <input type="file" id="fileInput" accept="image/*" multiple style="display: none;" />
+        </div>
+
+        <div class="sample-images-tray">
+          <span>Test immediately:</span>
+          <button type="button" class="sample-pill-btn" data-sample="landscape">Load Landscape Photo</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Editor Studio -->
+    <section class="editor-studio container" id="editorStudio" style="display: none;">
+      <div class="editor-preview-card">
+        <div class="editor-card-header">
+          <div class="preview-title-group">
+            <span>Compression Preview</span>
+          </div>
+          <div class="preview-toolbar">
+            <button type="button" class="tool-btn" id="uploadNewBtn">New File(s)</button>
+          </div>
+        </div>
+        <div class="canvas-viewport" id="cropperViewport"></div>
+      </div>
+
+      <div class="editor-controls-card">
+        <div class="control-tabs">
+          <button type="button" class="control-tab-btn active" data-tab="tabTargetKb">Target Size</button>
+          <button type="button" class="control-tab-btn" data-tab="tabDimensions">Format & DPI</button>
+        </div>
+
+        <div class="tab-pane active" id="tabTargetKb">
+          <div class="control-group">
+            <div class="control-label">
+              <span>Target File Size Limit</span>
+              <input type="checkbox" id="enableTargetKb" checked />
+            </div>
+            <div class="quick-kb-grid">
+              <button type="button" class="kb-btn" data-kb="100">100 KB</button>
+              <button type="button" class="kb-btn" data-kb="200">200 KB</button>
+              <button type="button" class="kb-btn" data-kb="500">500 KB</button>
+              <button type="button" class="kb-btn" data-kb="1000">1 MB</button>
+            </div>
+            <div class="form-group">
+              <label for="targetKbInput">Custom Target (KB):</label>
+              <input type="number" id="targetKbInput" class="form-input" value="200" min="10" max="10000" />
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-pane" id="tabDimensions">
+          <div class="control-group">
+            <label for="formatSelect">Output Format:</label>
+            <select id="formatSelect" class="form-select">
+              <option value="image/jpeg" selected>JPG (Standard High-Compatibility)</option>
+              <option value="image/webp">WebP (Maximum Compression Efficiency)</option>
+              <option value="image/png">PNG (Lossless)</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <label for="dpiSelect">Embedded DPI:</label>
+            <select id="dpiSelect" class="form-select">
+              <option value="72">72 DPI (Web)</option>
+              <option value="150">150 DPI (Email / Share)</option>
+              <option value="300" selected>300 DPI (Print Quality)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="summary-bar-card">
+          <div class="comparison-grid">
+            <div class="comp-box">
+              <div class="comp-label">Original</div>
+              <div class="comp-val" id="origSize">-- KB</div>
+              <div class="comp-dim" id="origDim">--</div>
+            </div>
+            <div class="comp-box highlight">
+              <div class="comp-label">Compressed</div>
+              <div class="comp-val" id="newSize">-- KB</div>
+              <div class="comp-dim" id="savingsBadge">-0%</div>
+            </div>
+          </div>
+          <button type="button" class="btn-download-main" id="downloadProcessedBtn">
+            Download Compressed Image
+          </button>
+          <div style="margin-top: 0.5rem;">
+            <button type="button" class="btn btn-outline btn-block" id="downloadZipBtn">
+              Download All as Batch ZIP
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-mount"></div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

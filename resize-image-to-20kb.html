@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resize Image to 20KB Online Free — IMLResizer</title>
+  <meta name="description" content="Resize image to 20KB online for free. Compress JPG, PNG, and WebP files to exactly 20KB or less for SSC, UPSC, bank exams, signatures, and job forms with 100% privacy." />
+  <meta name="keywords" content="resize image to 20kb, compress image to 20kb, 20kb photo resizer, signature resize 20kb, ssc signature 20kb, upsc signature 20kb" />
+  <link rel="canonical" href="https://xestus.in/imlresizer/resize-image-to-20kb.html" />
+
+  <meta property="og:title" content="Resize Image to 20KB Online Free — IMLResizer" />
+  <meta property="og:description" content="Compress and resize JPG, PNG, WebP images to 20KB without losing quality. Works 100% locally in your browser." />
+  <meta property="og:url" content="https://xestus.in/imlresizer/resize-image-to-20kb.html" />
+  <meta property="og:site_name" content="IMLResizer by Xestus" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "IMLResizer 20KB Tool",
+    "url": "https://xestus.in/imlresizer/resize-image-to-20kb.html",
+    "applicationCategory": "MultimediaApplication",
+    "description": "Free tool to compress photos and signatures down to exact 20 KB limit for competitive exams and government portals."
+  }
+  </script>
+</head>
+<body>
+  <div id="navbar-mount"></div>
+
+  <!-- Top Ad Slot -->
+  <div class="adsense-wrapper container adsense-leaderboard">
+    <div class="adsense-card" data-ad-slot="20kb-top">
+      <span class="adsense-label">Advertisement</span>
+      <div class="adsense-slot-placeholder">
+        <span>Google AdSense Responsive Unit (728x90)</span>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero-section container">
+      <div class="hero-pill-badge">
+        <span>Dedicated 20 KB Reducer</span>
+      </div>
+      <h1 class="hero-title">
+        Resize Image to <span class="hero-gradient">Exact 20KB Online</span>
+      </h1>
+      <p class="hero-subtitle">
+        Perfect for <strong>SSC, UPSC, IBPS, State Job Applications & Handwritten Signatures</strong> where files must be strictly under 20 KB.
+      </p>
+
+      <div class="trust-badges-bar">
+        <div class="trust-badge-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Strictly Under 20 KB Guarantee</span>
+        </div>
+        <div class="trust-badge-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Zero Server Storage (Safe for IDs & Signatures)</span>
+        </div>
+        <div class="trust-badge-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Adjust Dimensions in CM, MM or Pixels</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Upload Dropzone -->
+    <section class="dropzone-container container" id="dropzoneContainer">
+      <div class="dropzone-card" id="dropzone">
+        <div class="dropzone-icon-wrap">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+        </div>
+        <h2 class="dropzone-title">Upload Photo or Signature to Compress to 20KB</h2>
+        <p class="dropzone-desc">Accepts JPG, PNG, WebP. Downscales smoothly to 18-20 KB.</p>
+
+        <div class="dropzone-actions">
+          <button type="button" class="btn btn-primary btn-lg" id="selectFileBtn">
+            Select Image (Target: 20 KB)
+          </button>
+          <input type="file" id="fileInput" accept="image/*" multiple style="display: none;" />
+        </div>
+
+        <div class="sample-images-tray">
+          <span>Test immediately:</span>
+          <button type="button" class="sample-pill-btn" data-sample="signature">Sample Signature</button>
+          <button type="button" class="sample-pill-btn" data-sample="passport">Sample Photo</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Editor Studio (Auto-configured with 20KB target) -->
+    <section class="editor-studio container" id="editorStudio" style="display: none;">
+      <div class="editor-preview-card">
+        <div class="editor-card-header">
+          <div class="preview-title-group">
+            <span>20KB Crop & Live Viewport</span>
+          </div>
+          <div class="preview-toolbar">
+            <button type="button" class="tool-btn" id="rotLeftBtn">-90°</button>
+            <button type="button" class="tool-btn" id="rotRightBtn">+90°</button>
+            <button type="button" class="tool-btn" id="flipHBtn">Flip H</button>
+            <button type="button" class="tool-btn" id="faceGuideBtn">Face Guide</button>
+            <button type="button" class="tool-btn" id="resetCropBtn">Reset</button>
+            <button type="button" class="tool-btn" id="uploadNewBtn">New File</button>
+          </div>
+        </div>
+        <div class="canvas-viewport" id="cropperViewport"></div>
+        <div class="aspect-quickbar">
+          <span class="aspect-label">Aspect:</span>
+          <button type="button" class="aspect-pill active" data-ratio="free">Free</button>
+          <button type="button" class="aspect-pill" data-ratio="1:1">1:1</button>
+          <button type="button" class="aspect-pill" data-ratio="3.5:4.5">3.5:4.5</button>
+          <button type="button" class="aspect-pill" data-ratio="4:5">4:5</button>
+        </div>
+      </div>
+
+      <div class="editor-controls-card">
+        <div class="control-tabs">
+          <button type="button" class="control-tab-btn active" data-tab="tabTargetKb">Target 20KB</button>
+          <button type="button" class="control-tab-btn" data-tab="tabDimensions">Dimensions</button>
+          <button type="button" class="control-tab-btn" data-tab="tabEnhance">Enhance</button>
+        </div>
+
+        <div class="tab-pane active" id="tabTargetKb">
+          <div class="control-group">
+            <div class="control-label">
+              <span>Target File Size</span>
+              <input type="checkbox" id="enableTargetKb" checked />
+            </div>
+            <div class="quick-kb-grid">
+              <button type="button" class="kb-btn active" data-kb="20">20 KB</button>
+              <button type="button" class="kb-btn" data-kb="15">15 KB</button>
+              <button type="button" class="kb-btn" data-kb="30">30 KB</button>
+              <button type="button" class="kb-btn" data-kb="50">50 KB</button>
+            </div>
+            <div class="form-group">
+              <label for="targetKbInput">Exact Limit (KB):</label>
+              <input type="number" id="targetKbInput" class="form-input" value="20" min="5" max="1000" />
+            </div>
+            <p style="font-size: 0.75rem; color: var(--text-muted);">
+              Images are automatically optimized to hit ~18.5 KB - 19.8 KB so no portal will reject your file for exceeding 20 KB.
+            </p>
+          </div>
+        </div>
+
+        <div class="tab-pane" id="tabDimensions">
+          <div class="control-group">
+            <div class="unit-selector-row">
+              <button type="button" class="unit-btn active" data-unit="px">px</button>
+              <button type="button" class="unit-btn" data-unit="cm">cm</button>
+              <button type="button" class="unit-btn" data-unit="mm">mm</button>
+              <button type="button" class="unit-btn" data-unit="inch">in</button>
+            </div>
+            <div class="dimension-inputs-row">
+              <input type="number" id="widthInput" class="form-input" placeholder="W" />
+              <button type="button" id="ratioLockBtn" class="ratio-lock-btn locked" title="Lock Ratio">🔒</button>
+              <input type="number" id="heightInput" class="form-input" placeholder="H" />
+            </div>
+          </div>
+          <div class="control-group">
+            <label for="dpiSelect">DPI Resolution:</label>
+            <select id="dpiSelect" class="form-select">
+              <option value="200" selected>200 DPI (Exam Standard)</option>
+              <option value="300">300 DPI (Print Standard)</option>
+              <option value="72">72 DPI (Web Standard)</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <label for="formatSelect">Format:</label>
+            <select id="formatSelect" class="form-select">
+              <option value="image/jpeg" selected>JPG / JPEG</option>
+              <option value="image/png">PNG</option>
+              <option value="image/webp">WebP</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="tab-pane" id="tabEnhance">
+          <div class="control-group">
+            <label style="display: flex; justify-content: space-between; cursor: pointer;">
+              <span style="font-weight: 700;">Signature B&W Filter</span>
+              <input type="checkbox" id="enhanceSigToggle" />
+            </label>
+            <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem;">
+              Removes background shadows from mobile camera shots.
+            </p>
+            <input type="range" id="sigThresholdRange" min="100" max="230" value="185" style="width: 100%; margin-top: 0.5rem;" />
+          </div>
+        </div>
+
+        <div class="summary-bar-card">
+          <div class="comparison-grid">
+            <div class="comp-box">
+              <div class="comp-label">Original</div>
+              <div class="comp-val" id="origSize">-- KB</div>
+              <div class="comp-dim" id="origDim">--</div>
+            </div>
+            <div class="comp-box highlight">
+              <div class="comp-label">Output (Target 20KB)</div>
+              <div class="comp-val" id="newSize">-- KB</div>
+              <div class="comp-dim" id="newDim">--</div>
+            </div>
+          </div>
+          <button type="button" class="btn-download-main" id="downloadProcessedBtn">
+            Download 20KB Image (JPG)
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Detailed Guide on 20KB Resizing -->
+    <section class="content-section container">
+      <div class="section-header">
+        <h2 class="section-title">Why Government Portals Demand 20KB Images</h2>
+        <p class="section-desc">Learn about the strict limits enforced by SSC, UPSC, and Indian government servers.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-box">
+          <h3 class="feature-title">SSC Signature (10 KB - 20 KB)</h3>
+          <p class="feature-desc">Staff Selection Commission (SSC CGL, CHSL, MTS, GD) mandates signature images between 10 KB and 20 KB, with dimensions of 4.0 cm x 2.0 cm. Files over 20.0 KB are immediately blocked.</p>
+        </div>
+        <div class="feature-box">
+          <h3 class="feature-title">UPSC Signature (10 KB - 40 KB)</h3>
+          <p class="feature-desc">Union Public Service Commission requires signatures between 10 KB and 40 KB (commonly scaled around 20 KB) with dimensions of 1000 x 550 pixels to ensure clean document printing on admit cards.</p>
+        </div>
+        <div class="feature-box">
+          <h3 class="feature-title">PAN Card Portal (Under 20 KB)</h3>
+          <p class="feature-desc">NSDL and UTIITSL portals reject signature scans that exceed 20 KB or lack 200 DPI resolution. IMLResizer applies both 20KB and 200 DPI simultaneously.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-mount"></div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

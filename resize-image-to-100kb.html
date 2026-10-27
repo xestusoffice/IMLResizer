@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resize Image to 100KB Online Free — IMLResizer</title>
+  <meta name="description" content="Resize image to 100KB online for free. Compress JPG, PNG, and WebP images to exactly 100KB or less for UPSC, job applications, resumes, and official portals with 100% privacy." />
+  <meta name="keywords" content="resize image to 100kb, compress image to 100kb, 100kb photo resizer, upsc photo 100kb, document resize 100kb" />
+  <link rel="canonical" href="https://xestus.in/imlresizer/resize-image-to-100kb.html" />
+
+  <meta property="og:title" content="Resize Image to 100KB Online Free — IMLResizer" />
+  <meta property="og:description" content="Compress and resize images to 100KB. Perfect for UPSC, certificates, and job portals." />
+  <meta property="og:url" content="https://xestus.in/imlresizer/resize-image-to-100kb.html" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "IMLResizer 100KB Tool",
+    "url": "https://xestus.in/imlresizer/resize-image-to-100kb.html",
+    "applicationCategory": "MultimediaApplication",
+    "description": "Free tool to compress photos and scanned certificates down to 100 KB limit."
+  }
+  </script>
+</head>
+<body>
+  <div id="navbar-mount"></div>
+
+  <div class="adsense-wrapper container adsense-leaderboard">
+    <div class="adsense-card" data-ad-slot="100kb-top">
+      <span class="adsense-label">Advertisement</span>
+      <div class="adsense-slot-placeholder">
+        <span>Google AdSense Responsive Unit (728x90)</span>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero-section container">
+      <div class="hero-pill-badge">
+        <span>Dedicated 100 KB Reducer</span>
+      </div>
+      <h1 class="hero-title">
+        Resize Image to <span class="hero-gradient">Exact 100KB Online</span>
+      </h1>
+      <p class="hero-subtitle">
+        Ideal for <strong>UPSC Civil Services Photo, Scanned Certificates, Job Portals & Visas</strong> with a 100 KB maximum file size limit.
+      </p>
+
+      <div class="trust-badges-bar">
+        <div class="trust-badge-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Under 100 KB Strict Cap</span>
+        </div>
+        <div class="trust-badge-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Crystal Clear Text & Facial Detail</span>
+        </div>
+        <div class="trust-badge-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Client-Side Security</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Upload Dropzone -->
+    <section class="dropzone-container container" id="dropzoneContainer">
+      <div class="dropzone-card" id="dropzone">
+        <div class="dropzone-icon-wrap">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+        </div>
+        <h2 class="dropzone-title">Upload Photo or Certificate to Compress to 100KB</h2>
+        <p class="dropzone-desc">Accepts JPG, PNG, WebP. Compresses safely to 90-95 KB.</p>
+
+        <div class="dropzone-actions">
+          <button type="button" class="btn btn-primary btn-lg" id="selectFileBtn">
+            Select File (Target: 100 KB)
+          </button>
+          <input type="file" id="fileInput" accept="image/*" multiple style="display: none;" />
+        </div>
+
+        <div class="sample-images-tray">
+          <span>Test with sample:</span>
+          <button type="button" class="sample-pill-btn" data-sample="passport">Sample Portrait</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Editor Studio -->
+    <section class="editor-studio container" id="editorStudio" style="display: none;">
+      <div class="editor-preview-card">
+        <div class="editor-card-header">
+          <div class="preview-title-group">
+            <span>100KB Live Cropper</span>
+          </div>
+          <div class="preview-toolbar">
+            <button type="button" class="tool-btn" id="rotLeftBtn">-90°</button>
+            <button type="button" class="tool-btn" id="rotRightBtn">+90°</button>
+            <button type="button" class="tool-btn" id="faceGuideBtn">Face Guide</button>
+            <button type="button" class="tool-btn" id="resetCropBtn">Reset</button>
+            <button type="button" class="tool-btn" id="uploadNewBtn">New File</button>
+          </div>
+        </div>
+        <div class="canvas-viewport" id="cropperViewport"></div>
+        <div class="aspect-quickbar">
+          <span class="aspect-label">Aspect:</span>
+          <button type="button" class="aspect-pill active" data-ratio="free">Free</button>
+          <button type="button" class="aspect-pill" data-ratio="1:1">1:1</button>
+          <button type="button" class="aspect-pill" data-ratio="3.5:4.5">3.5:4.5</button>
+          <button type="button" class="aspect-pill" data-ratio="16:9">16:9</button>
+        </div>
+      </div>
+
+      <div class="editor-controls-card">
+        <div class="control-tabs">
+          <button type="button" class="control-tab-btn active" data-tab="tabTargetKb">Target 100KB</button>
+          <button type="button" class="control-tab-btn" data-tab="tabDimensions">Dimensions</button>
+        </div>
+
+        <div class="tab-pane active" id="tabTargetKb">
+          <div class="control-group">
+            <div class="control-label">
+              <span>Target File Size</span>
+              <input type="checkbox" id="enableTargetKb" checked />
+            </div>
+            <div class="quick-kb-grid">
+              <button type="button" class="kb-btn active" data-kb="100">100 KB</button>
+              <button type="button" class="kb-btn" data-kb="80">80 KB</button>
+              <button type="button" class="kb-btn" data-kb="150">150 KB</button>
+              <button type="button" class="kb-btn" data-kb="200">200 KB</button>
+            </div>
+            <div class="form-group">
+              <label for="targetKbInput">Exact Limit (KB):</label>
+              <input type="number" id="targetKbInput" class="form-input" value="100" min="5" max="2000" />
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-pane" id="tabDimensions">
+          <div class="control-group">
+            <div class="unit-selector-row">
+              <button type="button" class="unit-btn active" data-unit="px">px</button>
+              <button type="button" class="unit-btn" data-unit="cm">cm</button>
+              <button type="button" class="unit-btn" data-unit="mm">mm</button>
+              <button type="button" class="unit-btn" data-unit="inch">in</button>
+            </div>
+            <div class="dimension-inputs-row">
+              <input type="number" id="widthInput" class="form-input" placeholder="W" />
+              <button type="button" id="ratioLockBtn" class="ratio-lock-btn locked" title="Lock Ratio">🔒</button>
+              <input type="number" id="heightInput" class="form-input" placeholder="H" />
+            </div>
+          </div>
+          <div class="control-group">
+            <label for="dpiSelect">DPI Resolution:</label>
+            <select id="dpiSelect" class="form-select">
+              <option value="300" selected>300 DPI (High Res)</option>
+              <option value="200">200 DPI (Exam Standard)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="summary-bar-card">
+          <div class="comparison-grid">
+            <div class="comp-box">
+              <div class="comp-label">Original</div>
+              <div class="comp-val" id="origSize">-- KB</div>
+              <div class="comp-dim" id="origDim">--</div>
+            </div>
+            <div class="comp-box highlight">
+              <div class="comp-label">Output (Target 100KB)</div>
+              <div class="comp-val" id="newSize">-- KB</div>
+              <div class="comp-dim" id="newDim">--</div>
+            </div>
+          </div>
+          <button type="button" class="btn-download-main" id="downloadProcessedBtn">
+            Download 100KB Image (JPG)
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-mount"></div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Convert Image to PDF Online Free — IMLResizer</title>
+  <meta name="description" content="Convert JPG, PNG, and WebP images to PDF online for free. Combine multiple photos into a single PDF document for government forms and job applications with 100% privacy." />
+  <meta name="keywords" content="image to pdf, convert jpg to pdf, photo to pdf converter, combine images to pdf online free" />
+  <link rel="canonical" href="https://xestus.in/imlresizer/convert-to-pdf.html" />
+
+  <meta property="og:title" content="Convert Image to PDF Online Free — IMLResizer" />
+  <meta property="og:description" content="Convert photos and scanned documents to PDF format instantly in your browser." />
+  <meta property="og:url" content="https://xestus.in/imlresizer/convert-to-pdf.html" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "IMLResizer Image to PDF Converter",
+    "url": "https://xestus.in/imlresizer/convert-to-pdf.html",
+    "applicationCategory": "MultimediaApplication",
+    "description": "Free tool to convert and package photos into standard A4 PDF files."
+  }
+  </script>
+</head>
+<body>
+  <div id="navbar-mount"></div>
+
+  <div class="adsense-wrapper container adsense-leaderboard">
+    <div class="adsense-card" data-ad-slot="pdf-top">
+      <span class="adsense-label">Advertisement</span>
+      <div class="adsense-slot-placeholder">
+        <span>Google AdSense Responsive Unit (728x90)</span>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero-section container">
+      <div class="hero-pill-badge">
+        <span>A4 & Portrait PDF Generator</span>
+      </div>
+      <h1 class="hero-title">
+        Convert Image to <span class="hero-gradient">PDF Document Online</span>
+      </h1>
+      <p class="hero-subtitle">
+        Turn your photos, scanned ID cards, mark sheets, and certificates into a <strong>clean, standardized PDF file</strong> ready for upload to exam and job portals.
+      </p>
+
+      <div class="trust-badges-bar">
+        <div class="trust-badge-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Standard A4 Fit & Margin Alignment</span>
+        </div>
+        <div class="trust-badge-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Zero Server Uploads (Safe for Passports & IDs)</span>
+        </div>
+        <div class="trust-badge-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Free Forever</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Upload Dropzone -->
+    <section class="dropzone-container container" id="dropzoneContainer">
+      <div class="dropzone-card" id="dropzone">
+        <div class="dropzone-icon-wrap">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+        </div>
+        <h2 class="dropzone-title">Upload Image(s) to Convert to PDF</h2>
+        <p class="dropzone-desc">Accepts JPG, PNG, WebP. Formatted directly to an A4 PDF document.</p>
+
+        <div class="dropzone-actions">
+          <button type="button" class="btn btn-primary btn-lg" id="selectFileBtn">
+            Select Photo for PDF
+          </button>
+          <input type="file" id="fileInput" accept="image/*" multiple style="display: none;" />
+        </div>
+
+        <div class="sample-images-tray">
+          <span>Test immediately:</span>
+          <button type="button" class="sample-pill-btn" data-sample="passport">Sample Document</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Editor Studio -->
+    <section class="editor-studio container" id="editorStudio" style="display: none;">
+      <div class="editor-preview-card">
+        <div class="editor-card-header">
+          <div class="preview-title-group">
+            <span>Document Preview</span>
+          </div>
+          <div class="preview-toolbar">
+            <button type="button" class="tool-btn" id="rotLeftBtn">-90°</button>
+            <button type="button" class="tool-btn" id="rotRightBtn">+90°</button>
+            <button type="button" class="tool-btn" id="uploadNewBtn">New File</button>
+          </div>
+        </div>
+        <div class="canvas-viewport" id="cropperViewport"></div>
+      </div>
+
+      <div class="editor-controls-card">
+        <div class="control-tabs">
+          <button type="button" class="control-tab-btn active" data-tab="tabTargetKb">PDF Settings</button>
+        </div>
+
+        <div class="tab-pane active" id="tabTargetKb">
+          <div class="control-group">
+            <label style="font-weight: 700; font-size: 0.85rem; margin-bottom: 0.5rem; display: block;">Page Layout:</label>
+            <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 1rem;">
+              Image is automatically centered and scaled to standard A4 page dimensions while preserving maximum sharpness.
+            </p>
+          </div>
+        </div>
+
+        <div class="summary-bar-card">
+          <button type="button" class="btn-download-main" id="exportPdfBtn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+            <span>Download PDF Document</span>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-mount"></div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

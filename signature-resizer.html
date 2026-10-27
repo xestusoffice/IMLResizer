@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Signature Resizer & B&W Enhancer Online — IMLResizer</title>
+  <meta name="description" content="Resize and clean handwritten signature photos online. Remove background shadows, enhance black ink contrast, and compress to 10KB-20KB for SSC, UPSC, PAN card, and banking exams." />
+  <meta name="keywords" content="signature resizer, signature resize 10kb to 20kb, make signature black and white, ssc signature resize, pan card signature, upsc signature" />
+  <link rel="canonical" href="https://xestus.in/imlresizer/signature-resizer.html" />
+
+  <meta property="og:title" content="Signature Resizer & B&W Enhancer Online — IMLResizer" />
+  <meta property="og:description" content="Clean phone photos of handwritten signatures: pure black ink on clean white background under 20KB." />
+  <meta property="og:url" content="https://xestus.in/imlresizer/signature-resizer.html" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "IMLResizer Signature Tool",
+    "url": "https://xestus.in/imlresizer/signature-resizer.html",
+    "applicationCategory": "MultimediaApplication",
+    "description": "Free tool to enhance handwritten signatures, remove yellow paper tint, and resize to 10-20 KB."
+  }
+  </script>
+</head>
+<body>
+  <div id="navbar-mount"></div>
+
+  <div class="adsense-wrapper container adsense-leaderboard">
+    <div class="adsense-card" data-ad-slot="sig-top">
+      <span class="adsense-label">Advertisement</span>
+      <div class="adsense-slot-placeholder">
+        <span>Google AdSense Responsive Unit (728x90)</span>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero-section container">
+      <div class="hero-pill-badge">
+        <span>Smart Paper Shadow Cleaner</span>
+      </div>
+      <h1 class="hero-title">
+        Signature Resizer & <span class="hero-gradient">B&W Contrast Enhancer</span>
+      </h1>
+      <p class="hero-subtitle">
+        Took a photo of your signature with your phone? Clean away <strong>yellow paper tint, shadows and blur</strong>, turning it into <strong>crisp black ink on pure white</strong> under <strong>10 KB - 20 KB</strong>.
+      </p>
+
+      <div class="trust-badges-bar">
+        <div class="trust-badge-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Auto Threshold Shadow Removal</span>
+        </div>
+        <div class="trust-badge-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>SSC & UPSC Signature Compliant (10-20 KB)</span>
+        </div>
+        <div class="trust-badge-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>100% Client-Side Privacy</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Upload Dropzone -->
+    <section class="dropzone-container container" id="dropzoneContainer">
+      <div class="dropzone-card" id="dropzone">
+        <div class="dropzone-icon-wrap">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>
+        </div>
+        <h2 class="dropzone-title">Upload Photo of Handwritten Signature</h2>
+        <p class="dropzone-desc">Accepts camera photos, scans, JPG or PNG. Cleans shadows and shrinks to 15 KB.</p>
+
+        <div class="dropzone-actions">
+          <button type="button" class="btn btn-primary btn-lg" id="selectFileBtn">
+            Upload Signature Image
+          </button>
+          <input type="file" id="fileInput" accept="image/*" multiple style="display: none;" />
+        </div>
+
+        <div class="sample-images-tray">
+          <span>Test immediately:</span>
+          <button type="button" class="sample-pill-btn" data-sample="signature">Load Sample Pen Signature</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Editor Studio -->
+    <section class="editor-studio container" id="editorStudio" style="display: none;">
+      <div class="editor-preview-card">
+        <div class="editor-card-header">
+          <div class="preview-title-group">
+            <span>Signature Crop & Enhancement</span>
+          </div>
+          <div class="preview-toolbar">
+            <button type="button" class="tool-btn" id="rotLeftBtn">-90°</button>
+            <button type="button" class="tool-btn" id="rotRightBtn">+90°</button>
+            <button type="button" class="tool-btn" id="resetCropBtn">Reset</button>
+            <button type="button" class="tool-btn" id="uploadNewBtn">New File</button>
+          </div>
+        </div>
+        <div class="canvas-viewport" id="cropperViewport"></div>
+      </div>
+
+      <div class="editor-controls-card">
+        <div class="control-tabs">
+          <button type="button" class="control-tab-btn active" data-tab="tabEnhance">Enhance Ink</button>
+          <button type="button" class="control-tab-btn" data-tab="tabTargetKb">Target 15KB</button>
+          <button type="button" class="control-tab-btn" data-tab="tabDimensions">Dimensions</button>
+        </div>
+
+        <div class="tab-pane active" id="tabEnhance">
+          <div class="control-group">
+            <label style="display: flex; justify-content: space-between; align-items: center; cursor: pointer; margin-bottom: 0.75rem;">
+              <span style="font-weight: 700; font-size: 0.9rem;">B&W Paper Shadow Cleaner</span>
+              <input type="checkbox" id="enhanceSigToggle" checked />
+            </label>
+            <p style="font-size: 0.775rem; color: var(--text-muted); line-height: 1.4; margin-bottom: 1rem;">
+              Converts grayish shadows and uneven paper tints into solid pure white, while keeping the pen ink sharp and bold.
+            </p>
+            <div class="form-group">
+              <label for="sigThresholdRange" style="font-size: 0.8rem; font-weight: 700;">Ink Darkness Level:</label>
+              <input type="range" id="sigThresholdRange" min="110" max="230" value="185" style="width: 100%;" />
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-pane" id="tabTargetKb">
+          <div class="control-group">
+            <div class="control-label">
+              <span>Target File Size</span>
+              <input type="checkbox" id="enableTargetKb" checked />
+            </div>
+            <div class="quick-kb-grid">
+              <button type="button" class="kb-btn active" data-kb="15">15 KB</button>
+              <button type="button" class="kb-btn" data-kb="20">20 KB</button>
+              <button type="button" class="kb-btn" data-kb="10">10 KB</button>
+              <button type="button" class="kb-btn" data-kb="30">30 KB</button>
+            </div>
+            <div class="form-group">
+              <label for="targetKbInput">Exact KB Cap:</label>
+              <input type="number" id="targetKbInput" class="form-input" value="15" min="5" max="100" />
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-pane" id="tabDimensions">
+          <div class="control-group">
+            <div class="unit-selector-row">
+              <button type="button" class="unit-btn active" data-unit="cm">cm</button>
+              <button type="button" class="unit-btn" data-unit="px">px</button>
+              <button type="button" class="unit-btn" data-unit="mm">mm</button>
+            </div>
+            <div class="dimension-inputs-row">
+              <input type="number" id="widthInput" class="form-input" value="4.0" step="0.1" />
+              <button type="button" id="ratioLockBtn" class="ratio-lock-btn locked">🔒</button>
+              <input type="number" id="heightInput" class="form-input" value="2.0" step="0.1" />
+            </div>
+          </div>
+          <div class="control-group">
+            <label for="dpiSelect">Resolution:</label>
+            <select id="dpiSelect" class="form-select">
+              <option value="200" selected>200 DPI (Exam Standard)</option>
+              <option value="300">300 DPI</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="summary-bar-card">
+          <div class="comparison-grid">
+            <div class="comp-box">
+              <div class="comp-label">Original</div>
+              <div class="comp-val" id="origSize">-- KB</div>
+              <div class="comp-dim" id="origDim">--</div>
+            </div>
+            <div class="comp-box highlight">
+              <div class="comp-label">Cleaned Signature</div>
+              <div class="comp-val" id="newSize">-- KB</div>
+              <div class="comp-dim" id="newDim">--</div>
+            </div>
+          </div>
+          <button type="button" class="btn-download-main" id="downloadProcessedBtn">
+            Download Cleaned Signature (JPG)
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tips on Scanning Signatures -->
+    <section class="content-section container">
+      <div class="section-header">
+        <h2 class="section-title">Tips for Perfect Signature Uploads</h2>
+      </div>
+      <div class="features-grid">
+        <div class="feature-box">
+          <h3 class="feature-title">Use Blue or Black Pen</h3>
+          <p class="feature-desc">Sign on blank, unruled white paper. Avoid lined paper or notebook sheets which cause automatic portal rejection.</p>
+        </div>
+        <div class="feature-box">
+          <h3 class="feature-title">Even Natural Lighting</h3>
+          <p class="feature-desc">When snapping the photo with your phone, make sure your shadow doesn't cast over the paper. Our enhancer cleans up residual shadows.</p>
+        </div>
+        <div class="feature-box">
+          <h3 class="feature-title">Strict Size Compliance</h3>
+          <p class="feature-desc">SSC requires 10 to 20 KB. PAN requires under 20 KB. Setting your target to 15 KB ensures guaranteed acceptance on both portals.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-mount"></div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+# Robots.txt for IMLResizer by Xestus (https://xestus.in/imlresizer/)
+User-agent: *
+Allow: /
+
+Sitemap: https://xestus.in/imlresizer/sitemap.xml

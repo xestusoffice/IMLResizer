@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resize Image to 50KB Online Free — IMLResizer</title>
+  <meta name="description" content="Resize image to 50KB online for free. Compress JPG, PNG, and WebP photos to exactly 50KB or less for SSC CGL, NEET, UPSC, IBPS, and college admission forms with 100% privacy." />
+  <meta name="keywords" content="resize image to 50kb, compress image to 50kb, 50kb photo resizer, ssc photo resize 50kb, upsc photo 50kb, neet photo 50kb" />
+  <link rel="canonical" href="https://xestus.in/imlresizer/resize-image-to-50kb.html" />
+
+  <meta property="og:title" content="Resize Image to 50KB Online Free — IMLResizer" />
+  <meta property="og:description" content="Compress and resize photos to exact 50KB without blurriness. Free, secure, client-side tool." />
+  <meta property="og:url" content="https://xestus.in/imlresizer/resize-image-to-50kb.html" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "IMLResizer 50KB Tool",
+    "url": "https://xestus.in/imlresizer/resize-image-to-50kb.html",
+    "applicationCategory": "MultimediaApplication",
+    "description": "Free tool to compress exam and passport photos down to exact 50 KB limit."
+  }
+  </script>
+</head>
+<body>
+  <div id="navbar-mount"></div>
+
+  <!-- Top Ad Slot -->
+  <div class="adsense-wrapper container adsense-leaderboard">
+    <div class="adsense-card" data-ad-slot="50kb-top">
+      <span class="adsense-label">Advertisement</span>
+      <div class="adsense-slot-placeholder">
+        <span>Google AdSense Responsive Unit (728x90)</span>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero-section container">
+      <div class="hero-pill-badge">
+        <span>Dedicated 50 KB Reducer</span>
+      </div>
+      <h1 class="hero-title">
+        Resize Image to <span class="hero-gradient">Exact 50KB Online</span>
+      </h1>
+      <p class="hero-subtitle">
+        Ideal for <strong>SSC CGL / CHSL Photos, NEET UG, IBPS Bank PO, College Admissions</strong> where uploads must be between 20 KB and 50 KB.
+      </p>
+
+      <div class="trust-badges-bar">
+        <div class="trust-badge-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Under 50 KB Guarantee</span>
+        </div>
+        <div class="trust-badge-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Auto 3.5 x 4.5 cm Dimension Preset</span>
+        </div>
+        <div class="trust-badge-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Embedded 200/300 DPI</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Upload Dropzone -->
+    <section class="dropzone-container container" id="dropzoneContainer">
+      <div class="dropzone-card" id="dropzone">
+        <div class="dropzone-icon-wrap">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+        </div>
+        <h2 class="dropzone-title">Upload Photo to Resize & Compress to 50KB</h2>
+        <p class="dropzone-desc">Accepts JPG, PNG, WebP. Compresses safely to 45-48 KB.</p>
+
+        <div class="dropzone-actions">
+          <button type="button" class="btn btn-primary btn-lg" id="selectFileBtn">
+            Select Photo (Target: 50 KB)
+          </button>
+          <input type="file" id="fileInput" accept="image/*" multiple style="display: none;" />
+        </div>
+
+        <div class="sample-images-tray">
+          <span>Test with sample:</span>
+          <button type="button" class="sample-pill-btn" data-sample="passport">Sample Exam Photo</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Editor Studio -->
+    <section class="editor-studio container" id="editorStudio" style="display: none;">
+      <div class="editor-preview-card">
+        <div class="editor-card-header">
+          <div class="preview-title-group">
+            <span>50KB Cropper & Viewport</span>
+          </div>
+          <div class="preview-toolbar">
+            <button type="button" class="tool-btn" id="rotLeftBtn">-90°</button>
+            <button type="button" class="tool-btn" id="rotRightBtn">+90°</button>
+            <button type="button" class="tool-btn" id="faceGuideBtn">Face Guide</button>
+            <button type="button" class="tool-btn" id="resetCropBtn">Reset</button>
+            <button type="button" class="tool-btn" id="uploadNewBtn">New File</button>
+          </div>
+        </div>
+        <div class="canvas-viewport" id="cropperViewport"></div>
+        <div class="aspect-quickbar">
+          <span class="aspect-label">Aspect:</span>
+          <button type="button" class="aspect-pill" data-ratio="free">Free</button>
+          <button type="button" class="aspect-pill" data-ratio="1:1">1:1</button>
+          <button type="button" class="aspect-pill active" data-ratio="3.5:4.5">3.5:4.5 (Exam Standard)</button>
+        </div>
+      </div>
+
+      <div class="editor-controls-card">
+        <div class="control-tabs">
+          <button type="button" class="control-tab-btn active" data-tab="tabTargetKb">Target 50KB</button>
+          <button type="button" class="control-tab-btn" data-tab="tabDimensions">Dimensions</button>
+        </div>
+
+        <div class="tab-pane active" id="tabTargetKb">
+          <div class="control-group">
+            <div class="control-label">
+              <span>Target File Size</span>
+              <input type="checkbox" id="enableTargetKb" checked />
+            </div>
+            <div class="quick-kb-grid">
+              <button type="button" class="kb-btn active" data-kb="50">50 KB</button>
+              <button type="button" class="kb-btn" data-kb="40">40 KB</button>
+              <button type="button" class="kb-btn" data-kb="30">30 KB</button>
+              <button type="button" class="kb-btn" data-kb="20">20 KB</button>
+            </div>
+            <div class="form-group">
+              <label for="targetKbInput">Exact Limit (KB):</label>
+              <input type="number" id="targetKbInput" class="form-input" value="50" min="5" max="1000" />
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-pane" id="tabDimensions">
+          <div class="control-group">
+            <div class="unit-selector-row">
+              <button type="button" class="unit-btn" data-unit="px">px</button>
+              <button type="button" class="unit-btn active" data-unit="cm">cm</button>
+              <button type="button" class="unit-btn" data-unit="mm">mm</button>
+              <button type="button" class="unit-btn" data-unit="inch">in</button>
+            </div>
+            <div class="dimension-inputs-row">
+              <input type="number" id="widthInput" class="form-input" value="3.5" step="0.1" />
+              <button type="button" id="ratioLockBtn" class="ratio-lock-btn locked" title="Lock Ratio">🔒</button>
+              <input type="number" id="heightInput" class="form-input" value="4.5" step="0.1" />
+            </div>
+          </div>
+          <div class="control-group">
+            <label for="dpiSelect">DPI Resolution:</label>
+            <select id="dpiSelect" class="form-select">
+              <option value="200" selected>200 DPI (Exam Standard)</option>
+              <option value="300">300 DPI (High Res)</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <label for="formatSelect">Format:</label>
+            <select id="formatSelect" class="form-select">
+              <option value="image/jpeg" selected>JPG / JPEG</option>
+              <option value="image/png">PNG</option>
+              <option value="image/webp">WebP</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="summary-bar-card">
+          <div class="comparison-grid">
+            <div class="comp-box">
+              <div class="comp-label">Original</div>
+              <div class="comp-val" id="origSize">-- KB</div>
+              <div class="comp-dim" id="origDim">--</div>
+            </div>
+            <div class="comp-box highlight">
+              <div class="comp-label">Output (Target 50KB)</div>
+              <div class="comp-val" id="newSize">-- KB</div>
+              <div class="comp-dim" id="newDim">--</div>
+            </div>
+          </div>
+          <button type="button" class="btn-download-main" id="downloadProcessedBtn">
+            Download 50KB Image (JPG)
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 50KB Guide -->
+    <section class="content-section container">
+      <div class="section-header">
+        <h2 class="section-title">Common Exam Specifications for 50KB Photos</h2>
+      </div>
+      <div class="features-grid">
+        <div class="feature-box">
+          <h3 class="feature-title">SSC CGL & CHSL (20 KB - 50 KB)</h3>
+          <p class="feature-desc">Must be 3.5 cm width by 4.5 cm height, recently taken without spectacles or cap, with 200 DPI resolution.</p>
+        </div>
+        <div class="feature-box">
+          <h3 class="feature-title">NEET UG Passport Photo (10 KB - 200 KB)</h3>
+          <p class="feature-desc">National Testing Agency (NTA) accepts passport photos with white background, where 80% face coverage is clearly visible without mask.</p>
+        </div>
+        <div class="feature-box">
+          <h3 class="feature-title">IBPS Bank PO / Clerk (20 KB - 50 KB)</h3>
+          <p class="feature-desc">Banking recruitment demands color photograph of 4.5 cm x 3.5 cm taken against light-colored, preferably white, background.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-mount"></div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
